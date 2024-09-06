@@ -1,9 +1,3 @@
-/*
-	Dimension by HTML5 UP
-	html5up.net | @ajlkn
-	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
-*/
-
 (function($) {
 
 	var	$window = $(window),
@@ -399,12 +393,20 @@
 					});
 
 })(jQuery);
+  let currentImageIndex = 0;
+    const images = document.querySelectorAll('.thumbnail img');
 
-function openFullscreen(src) {
-    document.getElementById("fullscreenImage").src = src;
-    document.getElementById("fullscreenContainer").style.display = "block";
-}
+    function openFullscreen(src) {
+        document.getElementById('fullscreenContainer').style.display = 'block';
+        document.getElementById('fullscreenImage').src = src;
+        currentImageIndex = [...images].findIndex(image => image.src === src);
+    }
 
-function closeFullscreen() {
-    document.getElementById("fullscreenContainer").style.display = "none";
-}
+    function closeFullscreen() {
+        document.getElementById('fullscreenContainer').style.display = 'none';
+    }
+
+    function changeImage(direction) {
+        currentImageIndex = (currentImageIndex + direction + images.length) % images.length;
+        document.getElementById('fullscreenImage').src = images[currentImageIndex].src;
+    }

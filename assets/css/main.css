@@ -1,12 +1,6 @@
 @import url(fontawesome-all.min.css);
 @import url("https://fonts.googleapis.com/css?family=Source+Sans+Pro:300italic,600italic,300,600");
 
-/*
-	Dimension by HTML5 UP
-	html5up.net | @ajlkn
-	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
-*/
-
 html, body, div, span, applet, object,
 iframe, h1, h2, h3, h4, h5, h6, p, blockquote,
 pre, a, abbr, acronym, address, big, cite,
@@ -1674,52 +1668,121 @@ input, select, textarea {
 			width: 50px;
 		}
 
-		/* Thumbnail styling */
-.thumbnail img {
-    width: 150px;
-    height: auto;
-    cursor: pointer;
-    transition: 0.3s;
-}
 
-.thumbnail img:hover {
-    opacity: 0.8;
-}
+		.thumbnail-container {
+			display: flex;
+			flex-wrap: wrap;
+			gap: 20px;
+			justify-content: center;
+		}
+	
+		.thumbnail img {
+			width: auto;
+			height: auto;
+			max-width: 150px;
+			max-height: 100px;
+			border-radius: 10px;
+			object-fit: cover;
+			cursor: pointer;
+			box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+			transition: transform 0.3s ease, box-shadow 0.3s ease;
+			text-align: center;
+			border: 1px solid #ddd;
+		}
 
-/* Fullscreen styling */
-.fullscreen {
-    display: none;
-    position: fixed;
-    z-index: 1000;
-    left: 0;
-    top: 0;
-    width: 100%;
-    height: 100%;
-    overflow: hidden;
-    background-color: rgba(0, 0, 0, 0.9);
-}
+		.thumbnail img:hover {
+			transform: scale(1.25); 
+			opacity: 0.8;
+			box-shadow: 0 8px 16px rgba(0, 0, 0, 0.75); 
+		}
 
-.fullscreen img {
-    margin: auto;
-    display: block;
-    max-width: 100%;
-    max-height: 100%;
-}
-
-/* Close button styling */
-.close {
-    position: absolute;
-    top: 15px;
-    right: 35px;
-    color: #fff;
-    font-size: 40px;
-    font-weight: bold;
-    cursor: pointer;
-}
-
-.close:hover,
-.close:focus {
-    color: #bbb;
-    text-decoration: none;
-    cursor: pointer;
-}
+		.thumbnail .caption {
+			margin-top: 8px;
+			font-size: 14px;
+			color: #ffffff;
+		}
+	
+		.fullscreen {
+			display: none;
+			position: fixed;
+			z-index: 500;
+			left: 0;
+			top: 0;
+			width: 100%;
+			height: 100%;
+			background-color: rgba(0, 0, 0, 0.9);
+		}
+	
+		.fullscreen img {
+			max-width: 150%;
+			max-height: 150%;
+			margin: auto;
+			display: block;
+			position: absolute;
+			top: 50%;
+			left: 50%;
+			transform: translate(-50%, -50%);
+		}
+	
+		.fullscreen .close {
+			position: fixed;
+			top: 20px;
+			right: 20px;
+			font-size: 30px;
+			color: white;
+			cursor: pointer;
+			z-index: 1000;
+			padding: 5px;
+			border-radius: 5px;
+		}
+	
+		.fullscreen .prev,
+		.fullscreen .next {
+			cursor: pointer;
+			position: absolute;
+			top: 50%;
+			width: auto;
+			margin-top: -22px;
+			padding: 15px; 
+			color: white;
+			font-weight: bold;
+			font-size: 24px; 
+			transition: 0.3s ease;
+			border-radius: 3px; 
+			user-select: none; 
+			z-index: 1001; 
+			background-color: rgba(0, 0, 0, 0.5); 
+		}
+		
+		.fullscreen .prev {
+			left: 10px;
+			border-radius: 3px 0 0 3px; 
+		}
+		
+		.fullscreen .next {
+			right: 10px; 
+			border-radius: 0 3px 3px 0; 
+		}
+		
+		.fullscreen .prev:hover,
+		.fullscreen .next:hover {
+			background-color: rgba(0, 0, 0, 0.8); 
+			transform: scale(1.1); 
+		}
+		
+		@media (max-width: 768px) {
+			.fullscreen .prev,
+			.fullscreen .next {
+				font-size: 20px; /* Adjust font size for smaller screens */
+				padding: 10px; /* Adjust padding for smaller screens */
+			}
+		
+			.fullscreen .prev {
+				left: 5px; /* Adjust position for smaller screens */
+			}
+		
+			.fullscreen .next {
+				right: 5px; /* Adjust position for smaller screens */
+			}
+		}
+		
